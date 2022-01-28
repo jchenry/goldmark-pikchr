@@ -1,6 +1,6 @@
-[![Go Reference](https://pkg.go.dev/badge/github.com/abhinav/goldmark-pikchr.svg)](https://pkg.go.dev/github.com/abhinav/goldmark-pikchr)
-[![Go](https://github.com/abhinav/goldmark-pikchr/actions/workflows/go.yml/badge.svg)](https://github.com/abhinav/goldmark-pikchr/actions/workflows/go.yml)
-[![codecov](https://codecov.io/gh/abhinav/goldmark-pikchr/branch/main/graph/badge.svg?token=W98KYF8SPE)](https://codecov.io/gh/abhinav/goldmark-pikchr)
+[![Go Reference](https://pkg.go.dev/badge/github.com/jchenry/goldmark-pikchr.svg)](https://pkg.go.dev/github.com/jchenry/goldmark-pikchr)
+[![Go](https://github.com/jchenry/goldmark-pikchr/actions/workflows/go.yml/badge.svg)](https://github.com/jchenry/goldmark-pikchr/actions/workflows/go.yml)
+[![codecov](https://codecov.io/gh/jchenry/goldmark-pikchr/branch/main/graph/badge.svg?token=W98KYF8SPE)](https://codecov.io/gh/jchenry/goldmark-pikchr)
 
 goldmark-pikchr is an extension for the [goldmark] Markdown parser that adds
 support for [pikchr] diagrams.
@@ -13,7 +13,7 @@ support for [pikchr] diagrams.
 To use goldmark-pikchr, import the `pikchr` package.
 
 ```go
-import pikchr "github.com/abhinav/goldmark-pikchr"
+import pikchr "github.com/jchenry/goldmark-pikchr"
 ```
 
 Then include the `pikchr.Extender` in the list of extensions you build your
@@ -40,3 +40,5 @@ The package supports pikchr diagrams inside fenced code blocks with the language
 
 When you render the Markdown as HTML, these will be replaced with SVG blocks.
 [pikchr] will render these into diagrams client-side.
+
+Code is based on [github.com/abhinav/goldmark-mermaid](https://github.com/abhinav/goldmark-mermaid) and licensed under the same terms. 
