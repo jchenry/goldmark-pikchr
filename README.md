@@ -6,7 +6,7 @@ goldmark-pikchr is an extension for the [goldmark] Markdown parser that adds
 support for [pikchr] diagrams.
 
   [goldmark]: http://github.com/yuin/goldmark
-  [pikchr]: https://pikchr-js.github.io/pikchr/
+  [pikchr]: https://pikchr.org/home/doc/trunk/homepage.md
 
 # Usage
 
