@@ -1,0 +1,181 @@
+- desc: single block
+  give: |
+    Transforms pikchr blocks.
+
+    ```pikchr
+    arrow right 200% "Markdown" "Source"
+    box rad 10px "Markdown" "Formatter" "(markdown.c)" fit
+    arrow right 200% "HTML+SVG" "Output"
+    arrow <-> down 70% from last box.s
+    box same "Pikchr" "Formatter" "(pikchr.c)" fit
+    ```
+  want: |
+    <p>Transforms pikchr blocks.</p>
+    <div class="pikchr-svg" style="max-width:423px"><svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 423.821 195.84">
+    <polygon points="146,37 134,41 134,33" style="fill:rgb(0,0,0)"/>
+    <path d="M2,37L140,37"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="74" y="25" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>
+    <text x="74" y="49" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Source</text>
+    <path d="M161,72L258,72A15 15 0 0 0 273 57L273,17A15 15 0 0 0 258 2L161,2A15 15 0 0 0 146 17L146,57A15 15 0 0 0 161 72Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="209" y="17" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>
+    <text x="209" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Formatter</text>
+    <text x="209" y="57" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(markdown.c)</text>
+    <polygon points="417,37 405,41 405,33" style="fill:rgb(0,0,0)"/>
+    <path d="M273,37L411,37"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="345" y="25" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">HTML+SVG</text>
+    <text x="345" y="49" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Output</text>
+    <polygon points="209,72 214,84 205,84" style="fill:rgb(0,0,0)"/>
+    <polygon points="209,123 205,111 214,111" style="fill:rgb(0,0,0)"/>
+    <path d="M209,78L209,117"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <path d="M176,193L243,193A15 15 0 0 0 258 178L258,138A15 15 0 0 0 243 123L176,123A15 15 0 0 0 161 138L161,178A15 15 0 0 0 176 193Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="209" y="138" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Pikchr</text>
+    <text x="209" y="158" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Formatter</text>
+    <text x="209" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(pikchr.c)</text>
+    </svg>
+    </div>
+
+- desc: unmarked block
+  give: |
+    Leaves unmarked blocks alone.
+
+    ```
+    arrow right 200% "Markdown" "Source"
+    box rad 10px "Markdown" "Formatter" "(markdown.c)" fit
+    arrow right 200% "HTML+SVG" "Output"
+    arrow <-> down 70% from last box.s
+    box same "Pikchr" "Formatter" "(pikchr.c)" fit
+    ```
+  want: |
+    <p>Leaves unmarked blocks alone.</p>
+    <pre><code>arrow right 200% &quot;Markdown&quot; &quot;Source&quot;
+    box rad 10px &quot;Markdown&quot; &quot;Formatter&quot; &quot;(markdown.c)&quot; fit
+    arrow right 200% &quot;HTML+SVG&quot; &quot;Output&quot;
+    arrow &lt;-&gt; down 70% from last box.s
+    box same &quot;Pikchr&quot; &quot;Formatter&quot; &quot;(pikchr.c)&quot; fit
+    </code></pre>
+
+- desc: non-pikchr
+  give: |
+    Does not change other languages.
+
+    ```javascript
+    console.log("hello")
+    ```
+  want: |
+    <p>Does not change other languages.</p>
+    <pre><code class="language-javascript">console.log(&quot;hello&quot;)
+    </code></pre>
+
+- desc: multiple blocks
+  give: |
+    Supports multiple blocks.
+
+    ```pikchr
+    arrow right 200% "Markdown" "Source"
+    box rad 10px "Markdown" "Formatter" "(markdown.c)" fit
+    arrow right 200% "HTML+SVG" "Output"
+    arrow <-> down 70% from last box.s
+    box same "Pikchr" "Formatter" "(pikchr.c)" fit
+    ```
+
+    ```pikchr
+    linerad = 5px
+    C: circle "Center" rad 150%
+    circle "N"  at 1.0 n  of C; arrow from C to last chop ->
+    circle "NE" at 1.0 ne of C; arrow from C to last chop <-
+    circle "E"  at 1.0 e  of C; arrow from C to last chop <->
+    circle "SE" at 1.0 se of C; arrow from C to last chop ->
+    circle "S"  at 1.0 s  of C; arrow from C to last chop <-
+    circle "SW" at 1.0 sw of C; arrow from C to last chop <->
+    circle "W"  at 1.0 w  of C; arrow from C to last chop ->
+    circle "NW" at 1.0 nw of C; arrow from C to last chop <-
+    arrow from 2nd circle to 3rd circle chop
+    arrow from 4th circle to 3rd circle chop
+    arrow from SW to S chop <->
+    circle "ESE" at 2.0 heading 112.5 from Center thickness 150% fill lightblue radius 75%
+    arrow from Center to ESE thickness 150% <-> chop
+    arrow from ESE up 1.35 then to NE chop
+    line dashed <- from E.e to (ESE.x,E.y)
+    line dotted <-> thickness 50% from N to NW chop
+    ```
+  want: |
+    <p>Supports multiple blocks.</p>
+    <div class="pikchr-svg" style="max-width:423px"><svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 423.821 195.84">
+    <polygon points="146,37 134,41 134,33" style="fill:rgb(0,0,0)"/>
+    <path d="M2,37L140,37"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="74" y="25" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>
+    <text x="74" y="49" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Source</text>
+    <path d="M161,72L258,72A15 15 0 0 0 273 57L273,17A15 15 0 0 0 258 2L161,2A15 15 0 0 0 146 17L146,57A15 15 0 0 0 161 72Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="209" y="17" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>
+    <text x="209" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Formatter</text>
+    <text x="209" y="57" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(markdown.c)</text>
+    <polygon points="417,37 405,41 405,33" style="fill:rgb(0,0,0)"/>
+    <path d="M273,37L411,37"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="345" y="25" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">HTML+SVG</text>
+    <text x="345" y="49" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Output</text>
+    <polygon points="209,72 214,84 205,84" style="fill:rgb(0,0,0)"/>
+    <polygon points="209,123 205,111 214,111" style="fill:rgb(0,0,0)"/>
+    <path d="M209,78L209,117"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <path d="M176,193L243,193A15 15 0 0 0 258 178L258,138A15 15 0 0 0 243 123L176,123A15 15 0 0 0 161 138L161,178A15 15 0 0 0 176 193Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="209" y="138" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Pikchr</text>
+    <text x="209" y="158" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Formatter</text>
+    <text x="209" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(pikchr.c)</text>
+    </svg>
+    </div><div class="pikchr-svg" style="max-width:477px"><svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 477.397 364.32">
+    <circle cx="182" cy="182" r="54"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="182" y="182" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Center</text>
+    <circle cx="182" cy="38" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="182" y="38" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">N</text>
+    <polygon points="182,74 186,85 177,85" style="fill:rgb(0,0,0)"/>
+    <path d="M182,128L182,79"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="283" cy="80" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="283" y="80" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">NE</text>
+    <polygon points="220,143 225,132 231,138" style="fill:rgb(0,0,0)"/>
+    <path d="M224,139L258,105"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="326" cy="182" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="326" y="182" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">E</text>
+    <polygon points="236,182 247,177 247,186" style="fill:rgb(0,0,0)"/>
+    <polygon points="290,182 278,186 278,177" style="fill:rgb(0,0,0)"/>
+    <path d="M241,182L284,182"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="283" cy="283" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="283" y="283" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">SE</text>
+    <polygon points="258,258 247,253 253,247" style="fill:rgb(0,0,0)"/>
+    <path d="M220,220L254,254"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="182" cy="326" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="182" y="326" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">S</text>
+    <polygon points="182,236 186,247 177,247" style="fill:rgb(0,0,0)"/>
+    <path d="M182,241L182,290"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="80" cy="283" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="80" y="283" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">SW</text>
+    <polygon points="143,220 138,231 132,225" style="fill:rgb(0,0,0)"/>
+    <polygon points="105,258 110,247 116,253" style="fill:rgb(0,0,0)"/>
+    <path d="M139,224L109,254"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="38" cy="182" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="38" y="182" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">W</text>
+    <polygon points="74,182 85,177 85,186" style="fill:rgb(0,0,0)"/>
+    <path d="M128,182L79,182"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="80" cy="80" r="36"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <text x="80" y="80" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">NW</text>
+    <polygon points="143,143 132,138 138,132" style="fill:rgb(0,0,0)"/>
+    <path d="M139,139L105,105"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <polygon points="250,66 238,66 241,58" style="fill:rgb(0,0,0)"/>
+    <path d="M215,51L245,64"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <polygon points="297,113 306,122 298,125" style="fill:rgb(0,0,0)"/>
+    <path d="M312,148L299,118"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <polygon points="113,297 125,298 122,306" style="fill:rgb(0,0,0)"/>
+    <polygon points="148,312 136,311 139,303" style="fill:rgb(0,0,0)"/>
+    <path d="M118,299L143,310"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <circle cx="448" cy="292" r="27"  style="fill:rgb(173,216,230);stroke-width:3.24;stroke:rgb(0,0,0);" />
+    <text x="448" y="292" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">ESE</text>
+    <polygon points="232,202 250,203 245,215" style="fill:rgb(0,0,0)"/>
+    <polygon points="423,282 404,281 409,269" style="fill:rgb(0,0,0)"/>
+    <path d="M240,206L415,278"  style="fill:none;stroke-width:3.24;stroke:rgb(0,0,0);" />
+    <polygon points="319,84 331,81 330,89" style="fill:rgb(0,0,0)"/>
+    <path d="M448,265 L 448,105 Q 448,97 440,97 L 332,85 L 325,84"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+    <polygon points="362,182 373,177 373,186" style="fill:rgb(0,0,0)"/>
+    <path d="M367,182L448,182"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);stroke-dasharray:7.2,7.2;" />
+    <polygon points="148,51 144,56 142,52" style="fill:rgb(0,0,0)"/>
+    <polygon points="113,66 118,62 119,66" style="fill:rgb(0,0,0)"/>
+    <path d="M146,53L116,65"  style="fill:none;stroke-width:1.08;stroke:rgb(0,0,0);stroke-dasharray:2.1,7.2;" />
+    </svg>
+    </div>
