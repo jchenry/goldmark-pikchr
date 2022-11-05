@@ -7,13 +7,13 @@ var Kind = ast.NewNodeKind("PikchrBlock")
 
 // Block is a pikchr block.
 //
-//  ```pikchr
-//  graph TD;
-//      A-->B;
-//      A-->C;
-//      B-->D;
-//      C-->D;
-//  ```
+//	```pikchr
+//	graph TD;
+//	    A-->B;
+//	    A-->C;
+//	    B-->D;
+//	    C-->D;
+//	```
 //
 // Its raw contents are the plain text of the pikchr diagram.
 type Block struct {
