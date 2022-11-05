@@ -25,7 +25,7 @@ func (r *Renderer) Render(w util.BufWriter, src []byte, node ast.Node, entering 
 	n := node.(*Block)
 
 	if !entering {
-		raw := r.getLines(src, n)
+		raw := getLines(src, n)
 		res, _ := pikchr.Render(
 			string(raw),
 			pikchr.HTMLError(),
@@ -39,11 +39,11 @@ func (r *Renderer) Render(w util.BufWriter, src []byte, node ast.Node, entering 
 	return ast.WalkContinue, nil
 }
 
-func (r *Renderer) getLines(source []byte, n ast.Node) []byte {
+func getLines(source []byte, n ast.Node) []byte {
 	buf := bytes.NewBuffer([]byte{})
-	l := n.Lines().Len()
-	for i := 0; i < l; i++ {
-		line := n.Lines().At(i)
+	lines := n.Lines()
+	for i := 0; i < lines.Len(); i++ {
+		line := lines.At(i)
 		buf.Write(line.Value(source))
 	}
 	return buf.Bytes()
