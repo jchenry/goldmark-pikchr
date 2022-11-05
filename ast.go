@@ -8,11 +8,11 @@ var Kind = ast.NewNodeKind("PikchrBlock")
 // Block is a pikchr block.
 //
 //	```pikchr
-//	graph TD;
-//	    A-->B;
-//	    A-->C;
-//	    B-->D;
-//	    C-->D;
+//	arrow right 200% "Markdown" "Source"
+//	box rad 10px "Markdown" "Formatter" "(markdown.c)" fit
+//	arrow right 200% "HTML+SVG" "Output"
+//	arrow <-> down 70% from last box.s
+//	box same "Pikchr" "Formatter" "(pikchr.c)" fi	t
 //	```
 //
 // Its raw contents are the plain text of the pikchr diagram.
