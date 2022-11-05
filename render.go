@@ -31,7 +31,7 @@ func (r *Renderer) Render(w util.BufWriter, src []byte, node ast.Node, entering 
 			pikchr.HTMLError(),
 		)
 
-		_, _ = w.WriteString(fmt.Sprintf(`<div class="pikchr-svg" style="max-width:%dpx">`, res.Width))
+		_, _ = fmt.Fprintf(w, `<div class="pikchr-svg" style="max-width:%dpx">`, res.Width)
 		_, _ = w.Write([]byte(res.Data))
 		_, _ = w.WriteString("</div>")
 	}

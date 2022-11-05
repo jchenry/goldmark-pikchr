@@ -18,12 +18,7 @@ import (
 //	    &pikchr.Exender{},
 //	  ),
 //	)
-type Extender struct {
-	// URL of pikchr Javascript to be included in the page.
-	//
-	// Defaults to the latest version available on cdn.jsdelivr.net.
-	// pikchrJS string
-}
+type Extender struct{}
 
 // Extend extends the provided Goldmark parser with support for pikchr
 // diagrams.
