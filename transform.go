@@ -11,8 +11,8 @@ import (
 // Transformer transforms a Goldmark Markdown AST with support for pikchr
 // diagrams. It makes the following transformations:
 //
-//  - replace pikchr code blocks with pikchr.Block nodes
-//  - add a pikchr.ScriptBlock node if the document uses pikchr
+//   - replace pikchr code blocks with pikchr.Block nodes
+//   - add a pikchr.ScriptBlock node if the document uses pikchr
 type Transformer struct {
 }
 
