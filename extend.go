@@ -18,7 +18,9 @@ import (
 //	    &pikchr.Exender{},
 //	  ),
 //	)
-type Extender struct{}
+type Extender struct {
+	DarkMode bool
+}
 
 // Extend extends the provided Goldmark parser with support for pikchr
 // diagrams.
@@ -30,7 +32,7 @@ func (e *Extender) Extend(md goldmark.Markdown) {
 	)
 	md.Renderer().AddOptions(
 		renderer.WithNodeRenderers(
-			util.Prioritized(&Renderer{}, 100),
+			util.Prioritized(&Renderer{DarkMode: e.DarkMode}, 100),
 		),
 	)
 }

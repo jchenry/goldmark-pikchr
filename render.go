@@ -12,7 +12,9 @@ import (
 
 // Renderer renders pikchr diagrams as HTML, to be rendered into images
 // client side.
-type Renderer struct{}
+type Renderer struct {
+	DarkMode bool
+}
 
 // RegisterFuncs registers the renderer for pikchr blocks with the provided
 // Goldmark Registerer.
@@ -26,9 +28,14 @@ func (r *Renderer) Render(w util.BufWriter, src []byte, node ast.Node, entering 
 
 	if !entering {
 		raw := getLines(src, n)
+		opt := []pikchr.Option{}
+		opt = append(opt, pikchr.HTMLError())
+		if r.DarkMode {
+			opt = append(opt, pikchr.Dark())
+		}
 		res, _ := pikchr.Render(
 			string(raw),
-			pikchr.HTMLError(),
+			opt...,
 		)
 
 		_, _ = fmt.Fprintf(w, `<div class="pikchr-svg" style="max-width:%dpx">`, res.Width)
