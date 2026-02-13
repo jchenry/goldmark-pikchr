@@ -1,6 +1,9 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/jchenry/goldmark-pikchr.svg)](https://pkg.go.dev/github.com/jchenry/goldmark-pikchr)
 [![Go](https://github.com/jchenry/goldmark-pikchr/actions/workflows/go.yml/badge.svg)](https://github.com/jchenry/goldmark-pikchr/actions/workflows/go.yml)
 
+# Archived
+This project is now archived, use https://github.com/gopikchr/goldmark-pikchr instead (no CGO dependency)
+
 goldmark-pikchr is an extension for the [goldmark] Markdown parser that adds
 support for [pikchr] diagrams.
 
